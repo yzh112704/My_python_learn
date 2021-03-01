@@ -3,5 +3,5 @@
 from socket import *        #套接字
 while 1 :
     s = socket(AF_INET,SOCK_STREAM)
-    s.bind(('172.22.189.186',996))
+    s.bind(('192.168.1.1',996))
     s.listen(1)

@@ -3,7 +3,7 @@ import xlsxwriter
 import os
 import re
 
-def main(name, path, count, cishu):                     # count为1时创建新列
+def main(name, path, flag, cishu):                     # flag为True时创建新列
     wk = xlrd.open_workbook(path + '\\' + name)         # 读取Excel
     workbook = xlsxwriter.Workbook(path + '\\' + name)  # 新建Excel并编辑
     ws = wk.sheet_by_index(0)       # 获取Excel中第一个sheet（即sheet0）
@@ -21,7 +21,7 @@ def main(name, path, count, cishu):                     # count为1时创建新�
         num += 1
     for i in range(2 , num) :           # 获取对号信息
         data_flags.append(ws.col_values(i))
-    if count:                           # 是否添加新的表头
+    if flag:                           # 是否添加新的表头
         worksheet.write(0, num, cishu)
     else :
         num -= 1
@@ -63,5 +63,6 @@ def open_file(file_name, file_num, path) :      #file_name 文件名（姓名）
 if __name__ == "__main__":
     name = '统计.xlsx'        # 表名
     path = os.getcwd()                    # 获取当前目录
+    flag = True                           # 是否新建列
     cishu = '第一次'                      # 创建新列的名称
-    main(name,path,1,cishu)
+    main(name,path,flag,cishu)

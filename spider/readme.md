@@ -1,6 +1,6 @@
 ## scrapy框架
 [qiushibaike](https://github.com/yzh112704/My_Python_Learn/tree/master/spider/qiushibaike)  
-&emsp;[糗事百科](http://www.qiushibaike.com/text/) 内容抓取
+&emsp;[糗事百科](http://www.qiushibaike.com/text/) 内容抓取  
 [xiaohua](https://github.com/yzh112704/My_Python_Learn/tree/master/spider/xiaohua)  
 &emsp;[校花娱乐](http://www.521609.com/)明星写真图片抓取  
 ## [BeautifulSoup（优图库图片）.py](https://github.com/yzh112704/My_Python_Learn/blob/master/spider/BeautifulSoup%EF%BC%88%E4%BC%98%E5%9B%BE%E5%BA%93%E5%9B%BE%E7%89%87%EF%BC%89.py)

@@ -10,6 +10,8 @@ from PIL import Image
 requests.packages.urllib3.disable_warnings()
 lock = threading.Lock()  # 只是定义一个锁
 threads = []  # 多线程存放进程
+header = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.81'}
+
 
 # 漫画列表
 urls = {'https://www.manhuaniu.com/manhua/14782/': '神武帝尊'
@@ -116,6 +118,7 @@ def get_page(url, path):  # 判断该页是否已下载，并得到网页信息
         driver = selenium.webdriver.PhantomJS()
         driver.get(url)
         text = driver.page_source
+        driver.close()
         return text
 
 
@@ -136,13 +139,13 @@ def get_message(text, path):
 # 下载图片
 def create_img(url, path):
     text = get_page(url, path)
-    if text is None:
+    if text is not None:
         get_message(text, path)
 
 
 # 合并成长图
 def create_result_img(path, name, num):
-    file = 'F:\\爬虫\\代码\\漫画\\长图\\' + name + '.png'
+    file = os.getcwd() + '\\长图\\' + name + '.png'
     # 长图是否已经合成
     if os.path.exists(file):
         print('已合成长图。')
@@ -169,16 +172,16 @@ def create_result_img(path, name, num):
             for i, im in enumerate(ims):
                 # 粘贴图片
                 # 横坐标居中(最大宽度减去当前图片宽度之后除以二)，纵坐标上一个图片高度的结尾
-                result.paste(im, box=((max_width - im.size[0]) / 2, height))
+                result.paste(im, box=(int((max_width - im.size[0]) / 2), height))
                 # 高度增加上一个图片的高度
                 height += im.size[1]
             # 保存图片
             result.save(path + name)
             print('合成成功！')
-            isExists = os.path.exists('F:\\爬虫\\代码\\漫画\\长图\\')
+            isExists = os.path.exists(os.getcwd() + '\\长图\\')
             if not isExists:
-                os.makedirs('F:\\爬虫\\代码\\漫画\\长图\\')
-            result.save('F:\\爬虫\\代码\\漫画\\长图\\' + name)
+                os.makedirs(os.getcwd() + '\\长图\\')
+            result.save(os.getcwd() + '\\长图\\' + name)
             print('长图文件夹合成成功！\n\n')
         except(OSError, NameError):
             print('图片 ', str(i) + '.png OS错误！！')
@@ -189,7 +192,7 @@ def threads_download(name, url):
     num = get_url_page_num(url)
     url_lists = get_url_lists(url, num)
     name = re.sub(':', '：', name)
-    path = 'F:\\爬虫\\代码\\漫画\\' + name
+    path = os.getcwd() + '\\' + name
     isExists = os.path.exists(path)
     if not isExists:
         os.makedirs(path)

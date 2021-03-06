@@ -11,5 +11,14 @@
 抓取[500彩票](https://datachart.500.com)网彩票双色球历史信息，
 ## [selenium（拉勾网）.py](https://github.com/yzh112704/My_Python_Learn/blob/master/spider/selenium%EF%BC%88%E6%8B%89%E5%8B%BE%E7%BD%91%EF%BC%89.py)
 使用selenium对[拉钩网](https://www.lagou.com)进行操作并抓取招聘信息
+## [漫画牛下载漫画.py](https://github.com/yzh112704/My_Python_Learn/blob/master/spider/%E6%BC%AB%E7%94%BB%E7%89%9B%E4%B8%8B%E8%BD%BD%E6%BC%AB%E7%94%BB.py)
+[漫画牛](https://www.manhuaniu.com/)
+网站上爬取漫画，合并为长图。  
+使用easygui构造简单的可视化操作界面。
+使用requests获取页面信息，通过re、BeautifulSoup获取到漫画的信息（所有章节名称、url）。  
+使用selenium的webdriver.PhantomJS请求某一章节信息，获取到漫画图片url。  
+使用threading多线程，requests请求漫画图片url并保存到本地。  
+该话所有图片下载完成后，使用PIL的Image库操作所有图片合并成一张长图。
 ## [诗词名句.py](https://github.com/yzh112704/My_Python_Learn/blob/master/spider/%E8%AF%97%E8%AF%8D%E5%90%8D%E5%8F%A5.py)
 [诗词名句](https://www.shicimingju.com/)网站下载书籍信息
+
